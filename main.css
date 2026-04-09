@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    cursor: none; /* Hides default cursor */
+    
+}
+
+.cursor {
+  position: absolute;
+  width: 50px;  
+  height: 80px;
+  pointer-events: none;  /*  the cursor doesn't block interactions with other elements */
+  z-index: 9999;  /* Keep the custom cursor on top */
+  display: none;  /* Initially hidden */
+}
+
+
+header .date {
+  font-size: 1.2rem; 
+  color: #ffffff; /* White color for the text */
+  text-align: center; /* Center the text */
+  margin-top: -100px; /* Move the text up a bit */
+  margin-bottom: 70px; /* Add space at the bottom */
+  font-weight: normal; 
+  word-spacing: 2px; /* spacing between words */
+}
+
+.event-description {
+    color: #730e0e;
+    font-weight: normal;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 26px; 
+    margin-top: 50px; /* space between the title and the description */
+    margin-bottom: 3px; /*   space between description and the cards */
+}
+
+header.title {
+    background-color: #730e0e;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-weight: bold;
+}
+
+header.title h1 {
+font-size: 13vw; /* title size */
+margin-bottom: 100px;
+transition: color 0.3s ease; /* Smooth colour transition */
+font-family: 'Times New Roman', Times, serif;
+}
+
+header.title p {
+font-size: 1.5rem; 
+line-height: 1.6; /* Space out the lines for better readability */
+max-width: 800px; /* Limit width so the text doesn't stretch too far */
+margin: 0 auto; /* Center the paragraph */
+}
+
+/* Main container for all speakers */
+.speakers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 30px;
+    padding-top: 1px; /* Space between description and cards */
+}
+
+/* Speaker card container */
+.speaker {
+    width: 30%;
+    margin: 50px 20px 20px; /* 50px top margin for space */
+    perspective: 1000px; /* Flip effect */
+}
+
+/* Style for each card */
+.card {
+    width: 100%;
+    height: 500px; /* Increase height to allow enough space for content */
+    position: relative;
+    transform-style: preserve-3d; /*  both sides are visible */
+    transition: transform 0.6s; /* Smooth flip */
+}
+
+.card:hover {
+    transform: rotateY(180deg); /* Flip the card on hover */
+
+}
+.card:hover .cursor {
+  transform: scale(1.2);  /* Makes the cursor a little bigger on hover */
+  transition: transform 0.2s ease; /* Smooth transition */
+}
+
+/* Front side of the card */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back side when flipped */
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Front side content */
+.card-front {
+    background-color: #730e0e;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back side when flipped */
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card.flipped {
+    transform: rotateY(180deg); /* Flip the card on click */
+}
+/* Add styling for the image inside the card */
+.image-container {
+  position: relative;
+  width: 95%;
+  height: 75%; /* Adjust this value to control the image height */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* image covers the area without stretching */
+  position: absolute;
+  top: 0px;
+  left: -6px;
+}
+.speaker-name {
+    background-color: #730e0e;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.speaker-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px; /* space between description and biography*/
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.Heading-Description {
+    font-size: 2rem;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #730e0e;
+
+}
+
+/* Back side content */
+.card-back {
+    background-color: #ffffff;
+    transform: rotateY(180deg); /* Flip to the back side */
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.speaker-biography {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: normal;
+    margin-top: 20px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.Heading-Biography {
+    font-size: 2rem;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #730e0e;
+    font-weight: bold;
+    margin-top: 10px; /* Adds space between Biography and content */
+
+}
+
+
+@media (max-width: 768px) {
+    .speaker {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .speaker {
+        width: 100%;
+    }
+}
